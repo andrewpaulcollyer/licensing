@@ -27,18 +27,20 @@ class AddressObject(db.Model):
         self.country = country
         self.instructions = instructions
 
-    # Save Class Object to database
-    def save_to_db(self):
-        db.session.add(self)
-        db.session.commit()
-
     def validate(self):
         # Generate address string
-        address_string = self.address1 + " " + self.address2 + " " + self.address3 + " " + self.suburb + " " + self.state + " " + self.postcode + " " + self.country
+        address_string = ' '.join([self.address1, self.address2, self.address3, self.suburb, self.state, self.postcode, self.country])
         # TODO alidate against google api
         # https://developers.google.com/maps/documentation/javascript/places-autocomplete
         validate = True
         if validate:
-            return {'message': 'Address Validated'}
+            self.latitude = 72.1234567 #return to object
+            self.longitude = 72.1234567 #return to object
+            return {'message': 'Address validated'}
         else:
-            return {'message':'Country not valid for application'}
+            return {'message':'Address not valid'}
+
+    # Save Class Object to database
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
