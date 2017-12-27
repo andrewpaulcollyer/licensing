@@ -1,7 +1,7 @@
 from db import db
 from flask import jsonify
 
-class ItemModel(db.Model):
+class ItemObject(db.Model):
     __tablename__ = 'item'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -15,3 +15,6 @@ class ItemModel(db.Model):
         self.name = name
         self.price = price
         self.store_id = store_id
+
+    def method(self):
+        pass
