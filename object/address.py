@@ -17,7 +17,7 @@ class AddressObject(db.Model):
     latitude = db.Column(db.Float(precision=7))
     longitude = db.Column(db.Float(precision=7))
 
-    def __init__(self, address1, rice, store_id):
+    def __init__(self, address1, address2, address3, suburb, state, postcode, country, instructions):
         self.address1 = address1
         self.address2 = address2
         self.address3 = address3
