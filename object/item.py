@@ -1,5 +1,4 @@
 from db import db
-from flask import jsonify
 
 class ItemObject(db.Model):
     __tablename__ = 'item'
