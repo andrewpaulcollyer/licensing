@@ -40,7 +40,6 @@ class AddressObject(db.Model):
         else:
             return {'message':'Address not valid'}
 
-    # Save Class Object to database
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
