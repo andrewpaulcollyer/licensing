@@ -38,6 +38,10 @@ class PropertyObject(db.Model):
         self.long_desc = long_desc
         self.status = status
 
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
 
 class PropertyStatusObject(db.Model):
 
@@ -49,6 +53,10 @@ class PropertyStatusObject(db.Model):
     def __init__(self, id, desc):
         self.id = id
         self.desc = desc
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class PropertyTypeObject(db.Model):
@@ -62,6 +70,10 @@ class PropertyTypeObject(db.Model):
         self.id = id
         self.desc = desc
 
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
 
 class PropertyCatalogueObject(db.Model):
 
@@ -70,9 +82,13 @@ class PropertyCatalogueObject(db.Model):
     id = db.Column(db.String(10), primary_key=True)
     desc = db.Column(db.String(20))
 
-    def __init__(self, id, desc):
+    def __init__(self, id, name):
         self.id = id
-        self.desc = desc
+        self.name = name
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class PropertyFormatObject(db.Model):
@@ -85,3 +101,7 @@ class PropertyFormatObject(db.Model):
     def __init__(self, id, desc):
         self.id = id
         self.desc = desc
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()

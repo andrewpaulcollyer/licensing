@@ -34,5 +34,12 @@ class ContributorTypeObject(db.Model):
 class ContributorLinkObject(db.Model):
     __tablename__ = 'contributor_link'
 
+    # Link to Contributors
+    contributor_id = db.Column(db.Integer, db.ForeignKey('contributor.id'))
+    contributor = db.relationship('ContributorObject')
+    # Specify Type of Contributor
     type = db.Column(db.String(1), db.ForeignKey('contributor_type.id'))
     contributor_type = db.relationship('ContributorTypeObject')
+    # Specify related property
+    property_id = db.Column(db.Integer, db.ForeignKey('property.id'))
+    property = db.relationship('PropertyObject')
